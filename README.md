@@ -1,7 +1,10 @@
 # phonegap-Ratchet template
 1.This is a demo phonegap application  that shows [Ratchet](https://github.com/maker/ratchet) working with (PhoneGap)[http://phonegap.com]. 
+
 2. It is ready for testing and further development.
+
 3.Note it does not contain a config.xml file
+
 4.It uses the ratchet framework see http://goratchet.com/ for documentation
 
 How to use
