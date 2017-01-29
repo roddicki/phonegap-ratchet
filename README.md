@@ -1,38 +1,25 @@
-# phonegap-template
-This is a “hello world” phonegap application that is ready for testing and further development.
-Note it does not contain a config.xml file
+# phonegap-Ratchet template
+1.This is a demo phonegap application  that shows [Ratchet](https://github.com/maker/ratchet) working with (PhoneGap)[http://phonegap.com]. 
+2. It is ready for testing and further development.
+3.Note it does not contain a config.xml file
+4.It uses the ratchet framework see http://goratchet.com/ for documentation
 
 How to use
 ----------
-Create a new phonegap project using Phonegap cli or desktop app 
-Replace the www directory with this repository.
+1.Create a new phonegap project using Phonegap cli or desktop app 
+2.Replace the www directory with this repository.
 
 More information
 ----------
+This repository is based on Ryan Stewart's change to the Ratchet js https://github.com/ryanstewart/phonegap-ratchet-demo but updated with Ratchet v2.0.2
 
-This repository differs from the standard “hello world” application by rewriting a simpler event handler that binds any custom JavaScript functions to the status of the mobile device (deviceready).
+In order to get Ratchet to work with PhoneGap there is a small change to `rachet.js`. In that file:
 
-The relevant code live in www/js/index.js.
+`if (xhr.readyState == 4) xhr.status == 200 ? success(xhr, options) : failure(options.url);`
 
-Code example
-------------
-The event Listener:
-```
-document.addEventListener('deviceready', function() {
-    
-});
-```
+has been replaced with
 
-An example function:
-```
-document.addEventListener('deviceready', function() {
-    
-    //example function
-    function changeSomeText() {
-        document.getElementById('change').innerHTML = "this text was changed by javascript";
-    }
+`      if (xhr.readyState == 4) xhr.status == 200 || (xhr.status == 0 && options.url.indexOf('file:///') != -1) ? success(xhr, options) : failure(options.url);`
 
-    //run the example function
-    changeSomeText();
-});
-```
+By also allowing for an XMLHttpRequest status of 0 when we're working with the filesystem, PhoneGap can work with push.js that Ratchet uses. (Thanks to [@macdonst](https://twitter.com/macdonst) for the tip).
+(from https://github.com/ryanstewart/phonegap-ratchet-demo)
