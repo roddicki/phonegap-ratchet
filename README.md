@@ -25,5 +25,5 @@ has been replaced with
 
 `      if (xhr.readyState == 4) xhr.status == 200 || (xhr.status == 0 && options.url.indexOf('file:///') != -1) ? success(xhr, options) : failure(options.url);`
 
-By also allowing for an XMLHttpRequest status of 0 when we're working with the filesystem, PhoneGap can work with push.js that Ratchet uses. (Thanks to [@macdonst](https://twitter.com/macdonst) for the tip).
+By also allowing for an XMLHttpRequest status of 0 when we're working with the filesystem, PhoneGap can work with push.js that Ratchet uses.
 (from https://github.com/ryanstewart/phonegap-ratchet-demo)
